@@ -8,7 +8,8 @@ import androidx.compose.ui.Modifier
     @Composable
     fun HabitTaskList(
         list: List<HabitTask>,
-        modifier: Modifier = Modifier
+        modifier: Modifier = Modifier,
+        viewModel: HabitViewModel
     ){ LazyColumn(
              modifier = modifier
          ){
@@ -17,7 +18,12 @@ import androidx.compose.ui.Modifier
             key = {habit -> habit.id}
         ){habit ->
             HabitCards(
-                habitName = habit.Task)
+                habitName = habit.Task,
+                modifier = modifier,
+                viewModel,
+                deleteID = habit.id
+                )
+
          }
          }
      }

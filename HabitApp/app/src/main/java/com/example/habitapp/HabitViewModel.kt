@@ -6,6 +6,8 @@ import java.time.LocalDate
 import kotlin.collections.ArrayList
 
 class HabitViewModel: ViewModel() {
+    val date: LocalDate = LocalDate.now()
+    var count = 4
     private val _habits = getDay1List().toMutableStateList()
     private val _habits2 = getDay2List().toMutableStateList()
     val habits: List<HabitTask>
@@ -14,6 +16,18 @@ class HabitViewModel: ViewModel() {
     val habits2:List<HabitTask>
         get() = _habits2
 
+    fun addHabit(addHabit: String){
+        _habits.add(HabitTask(count, addHabit, date))
+        count++
+    }
+
+    fun removeHabit(deleteHabit: Int){
+        for (x in _habits){
+            if (x.id == deleteHabit){
+                _habits.remove(x)
+            }
+        }
+    }
 
 }
 
