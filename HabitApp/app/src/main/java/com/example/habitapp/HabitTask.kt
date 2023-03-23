@@ -10,7 +10,7 @@ class HabitTask(
     val Task:String,
     val dateComplete: LocalDate,
     isCompleted:Boolean = false
-
-) {
+)
+{
     var completed by mutableStateOf(isCompleted)
 }
