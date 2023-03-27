@@ -3,6 +3,7 @@ package com.example.habitapp
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,8 +15,7 @@ import androidx.compose.ui.unit.dp
 fun HabitCards(
     habitName: String,
     modifier: Modifier = Modifier,
-    viewModel: HabitViewModel,
-    deleteID: Int
+    viewModel: HabitViewModel
 ){
     Row(
         modifier = modifier, verticalAlignment = Alignment.CenterVertically
@@ -24,14 +24,12 @@ fun HabitCards(
             modifier = Modifier
                 .weight(1f)
                 .padding(start = 16.dp)
-                .pointerInput(Unit){
-                       detectHorizontalDragGestures{_, dragAmount ->
-                         when {
-                             dragAmount >= 20f -> viewModel.removeHabit(deleteID)
-                         }
-                       }
-                },
+                ,
             text = habitName)
+        //deletes habit from database
+        Button(onClick = { viewModel.deleteHabit(habitName) }) {
+            
+        }
     }
 
 }
