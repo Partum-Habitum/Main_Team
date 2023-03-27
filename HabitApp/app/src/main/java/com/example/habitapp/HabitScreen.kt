@@ -1,47 +1,59 @@
 package com.example.habitapp
 
-import androidx.compose.foundation.gestures.Orientation
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.habitapp.Settings.SettingsScreen
 import com.example.habitapp.Streaks.StreaksScreen
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
-
 
 @Composable
 fun HabitScreen(
     modifier: Modifier = Modifier,
-    habitViewModel: HabitViewModel = viewModel()
-    ) {
+    habitViewModel: HabitViewModel
+) {
+
+    //This is how data is moved between composable functions and database.
+    val habitList by habitViewModel.allHabits.observeAsState()
+
+    //used to capture text from TextField.
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
-
-    Column(modifier = modifier, horizontalAlignment = Alignment.Start,){
+    Column(modifier = modifier, horizontalAlignment = Alignment.Start) {
         Row(modifier = modifier.padding(1.dp)) {
+            TextField(
+                value = text,
+                onValueChange = { newText ->
+                    text = newText
+                }
+            )
+            //Adds habits to db
+            Button(onClick = { habitViewModel.addHabitToDB(text.text) }) {
+
+            }
+        }
+        habitList?.let {
+            HabitTaskList(
+                list = it,
+                modifier = modifier,
+                habitViewModel
+            )
+        }
+        //todo Delete these?
+        /*Row(modifier = modifier) {
             StreaksScreen()
             SettingsScreen()
-        }
-        Row(modifier = modifier) {
-            HabitTaskList(
-                list = habitViewModel.habits,
-                modifier = modifier,
-                habitViewModel,
-            )
+        }*/
     }
-}
-
 
     //This is the button and text field alignment
     Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(),
@@ -52,10 +64,10 @@ fun HabitScreen(
             modifier = modifier,
         ) {
             Button(
-                onClick = {habitViewModel.addHabit(text.text) },
+                onClick = {habitViewModel.addHabitToDB(text.text) },
                 Modifier.padding(8.dp),
                 shape = CircleShape,
-                )
+            )
             {
                 Text(
                     text = "+",
@@ -68,11 +80,10 @@ fun HabitScreen(
 }
 
 
-
-
 /*  TextField(
       value = text,               //TODO
       onValueChange = { newText ->
           text = newText
       }
   ) */
+
