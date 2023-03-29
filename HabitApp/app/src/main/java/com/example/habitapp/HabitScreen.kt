@@ -56,14 +56,18 @@ fun HabitScreen(
     }
 
     //This is the button and text field alignment
-    Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight(),
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.End,
     ) {
         Row(
             modifier = modifier,
         ) {
-            Button(
+
+        PopupWindowDialog()
+          /*  Button(
                 onClick = {habitViewModel.addHabitToDB(text.text) },
                 Modifier.padding(8.dp),
                 shape = CircleShape,
@@ -74,7 +78,7 @@ fun HabitScreen(
                     Modifier.padding(3.dp),
                     fontSize = 30.sp
                 )
-            }
+            }*/
         }
     }
 }
