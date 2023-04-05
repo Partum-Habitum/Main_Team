@@ -81,4 +81,4 @@ fun HabitScreen(
           text = newText
       }
   ) */
-
+//onClick = {habitViewModel.addHabitToDB(text.text) }
