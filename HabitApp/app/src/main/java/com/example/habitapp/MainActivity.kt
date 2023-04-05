@@ -18,6 +18,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Shapes
+import androidx.compose.runtime.LaunchedEffect
+import kotlinx.coroutines.delay
 
 
 class MainActivity : ComponentActivity() {
@@ -32,8 +34,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    //start here
-                    HabitScreen(modifier = Modifier, habitViewModel)
+                    //Display the splash screen
+                    SplashScreen()
+
+                    //start a LaunchEffect to delay showing the main screen
+                    LaunchedEffect(Unit){
+                        delay(2500) //adjust duration as needed
+                        setContent{
+                            //show the main screen after delay
+                            HabitScreen(modifier = Modifier, habitViewModel)
+                        }
+                    }
                 }
             }
         }
