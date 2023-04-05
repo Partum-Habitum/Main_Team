@@ -44,7 +44,8 @@ fun SplashScreen(){
             Icon(
                 imageVector = Icons.Default.CheckCircle,
                 contentDescription = "Logo Icon",
-                tint = Color.White
+                tint = Color.White,
+                modifier = Modifier.size(140.dp)
             )
             /*USE THIS IF WE WANT OUR OWN LOGO
             Image(
@@ -52,7 +53,7 @@ fun SplashScreen(){
                 contentDescription = null)
             */
             Text(
-                text = "Loading...",
+                text = "Success is gauged by self-mastery",
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 color = Color.White,
