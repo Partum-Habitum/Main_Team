@@ -17,25 +17,25 @@ import com.example.habitapp.ui.theme.*
 
 // on below line we are creating a pop up window dialog method
 @Composable
-fun PopupWindowDialog() {
+fun InfoPopup() {
     // on below line we are creating variable for button title
     // and open dialog.
     val openDialog = remember { mutableStateOf(false) }
     val buttonTitle = remember {
-        mutableStateOf("+")
+        mutableStateOf("Streaks")
     }
 
     // on below line we are creating a box to display box.
     Box {
         // on below line we are specifying height and width
-        val popupWidth = 400.dp
-        val popupHeight = 200.dp
+        val popupWidth = 415.dp
+        val popupHeight = 300.dp
 
         // on below line we are checking if dialog is open
         if (openDialog.value) {
             // on below line we are updating button
             // title value.
-            buttonTitle.value = "-"
+            buttonTitle.value = "Close"
             // on below line we are adding pop up
             Popup(
                 // on below line we are adding
@@ -66,12 +66,12 @@ fun PopupWindowDialog() {
                         // on below line we are adding horizontal and vertical
                         // arrangement to it.
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                        verticalArrangement = Arrangement.Bottom
                     ) {
                         // on below line we are adding text for our pop up
                         Text(
                             // on below line we are specifying text
-                            text = "Enter your habit",
+                            text = "Streaks:",                   //TODO  This will be the streaks logic
                             // on below line we are specifying color.
                             color = Color.White,
                             // on below line we are adding padding to it
@@ -93,11 +93,11 @@ fun PopupWindowDialog() {
         // max size
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp),
+            .padding(horizontal = 1.dp),
 
         // on below line we are adding horizontal alignment
         // and vertical arrangement
-        horizontalAlignment = Alignment.End,
+        horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Bottom
     ) {
 
@@ -107,9 +107,9 @@ fun PopupWindowDialog() {
             // on below line we are adding modifier.
             // and padding to it,
             modifier = Modifier
- //               .fillMaxWidth()
+                //               .fillMaxWidth()
                 .padding(10.dp),
-                shape = CircleShape,
+            shape = CircleShape,
 
             // on below line we are adding
             // on click to our button
@@ -123,7 +123,7 @@ fun PopupWindowDialog() {
                 if (!openDialog.value) {
 
                     // on below line we are updating value
-                    buttonTitle.value = "+"
+                    buttonTitle.value = "Streaks"
                 }
             }
         ) {

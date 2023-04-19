@@ -30,7 +30,7 @@ fun HabitCards(
     Row(
         modifier = modifier
     ) {
-        Button(modifier = Modifier,
+       /* Button(modifier = Modifier,
             //.padding(top = 10.dp),
             shape = CircleShape,
             colors = buttonColors(Color.White),
@@ -40,7 +40,7 @@ fun HabitCards(
                 contentDescription = "Info Button",
                 modifier = Modifier.size(22.dp)
             )
-        }
+        } */
         /*  Button(modifier = Modifier
             .padding(top = 10.dp),
             shape = CircleShape,
