@@ -69,6 +69,22 @@ fun HabitScreen(
                     habitViewModel
                 )
             }
+            Column(
+
+                // in this column we are specifying
+                // modifier to add padding and fill
+                // max size
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 1.dp),
+
+                // on below line we are adding horizontal alignment
+                // and vertical arrangement
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.Bottom
+            ) {
+                InfoPopup()
+            }
         }
         Box(
             modifier = Modifier
