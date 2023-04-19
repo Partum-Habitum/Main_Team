@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,7 +46,7 @@ fun SplashScreen(){
                 imageVector = Icons.Default.CheckCircle,
                 contentDescription = "Logo Icon",
                 tint = Color.White,
-                modifier = Modifier.size(140.dp)
+                modifier = Modifier.size(140.dp),
             )
             /*USE THIS IF WE WANT OUR OWN LOGO
             Image(
@@ -54,6 +55,7 @@ fun SplashScreen(){
             */
             Text(
                 text = "Success is gauged by self-mastery",
+                fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 color = Color.White,

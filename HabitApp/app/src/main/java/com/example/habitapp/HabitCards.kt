@@ -16,7 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 
 @Composable
@@ -52,7 +54,8 @@ fun HabitCards(
                 .weight(1f)
                 .padding(top = 12.dp, bottom = 0.dp),
 
-            text = habitName
+            text = habitName,
+            style = TextStyle(fontSize = 20.sp)
         )
 
         //deletes habit from database
